@@ -18,9 +18,9 @@ export class HomeComponent {
   // Single
   singleTrack: Track[] = [
     {
-      title: 'In Love',
+      title: 'Ben anh',
       link:
-        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0',
+        'https://zingmp3.vn/bai-hat/Ben-Anh-Em-Se-Khong-Co-Tuong-Lai-HKT/ZW6A78B7.html',
       duration: 227,
       artist: 'A Himitsu feat. Nori'
     }
@@ -29,9 +29,9 @@ export class HomeComponent {
   // Multiple
   multiple: Track[] = [
     {
-      title: 'In Love',
+      title: 'Ben anh',
       link:
-        'https://dl.dropboxusercontent.com/s/9v0psowra7ekhxo/A%20Himitsu%20-%20In%20Love%20%28feat.%20Nori%29.flac?dl=0',
+        'https://zingmp3.vn/bai-hat/Ben-Anh-Em-Se-Khong-Co-Tuong-Lai-HKT/ZW6A78B7.html',
       duration: 227,
       artist: 'A Himitsu feat. Nori'
     },
