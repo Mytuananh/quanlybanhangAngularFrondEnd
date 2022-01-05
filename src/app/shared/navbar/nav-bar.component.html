@@ -4,9 +4,21 @@
       alt="">
     <span>Audio Player</span>
   </a>
-  <a mat-button class="docs-button" routerLink="register" aria-label="Angular Material">
+  <a *ngIf="!checkLogin" mat-button class="docs-button" routerLink="register" aria-label="Angular Material">
     <span>Register</span>
   </a>
+  <a *ngIf="!checkLogin" mat-button class="docs-button" routerLink="login" aria-label="Angular Material">
+    <span>Login</span>
+  </a>
+  <a *ngIf="checkLogin" mat-button class="docs-button" routerLink="user-account" aria-label="Angular Material">
+    <img class="docs-angular-logo" src="{{avatar}}"
+         alt="">
+  </a>
+  <a *ngIf="checkLogin" mat-button class="docs-button" routerLink="user-account" aria-label="Angular Material">
+    <span>{{name}}</span>
+  </a>
+
+
 
   <div class="flex-spacer"></div>
   <app-theme-picker></app-theme-picker>
