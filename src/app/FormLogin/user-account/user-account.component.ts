@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from '../../service/token.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-account',
@@ -8,12 +9,16 @@ import {TokenService} from '../../service/token.service';
 })
 export class UserAccountComponent implements OnInit {
 
-  constructor(private tokeService: TokenService) { }
+  constructor(private tokeService: TokenService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
 
   Logout() {
     this.tokeService.Logout();
+    this.router.navigate(['login']).then(() => {
+      window.location.reload();
+    })
   }
 }

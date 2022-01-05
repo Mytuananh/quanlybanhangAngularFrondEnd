@@ -13,6 +13,7 @@ export class AuthService {
   //API_LOCAL
   // private API_SIGNUP = environment.API_LOCAL+'signup';
   //API_SERVE
+  data: boolean;
   private API_SIGNUP= environment.API_SERVE+'signup';
   private API_SIGNIN = environment.API_SERVE+'signin';
   constructor(private http: HttpClient) { }
@@ -24,4 +25,11 @@ export class AuthService {
     return this.http.post<JwtResponse>(this.API_SIGNIN, signInForm)
   }
 
+  setData(data) {
+    this.data = data;
+  }
+
+  getData(): boolean {
+    return this.data;
+  }
 }
