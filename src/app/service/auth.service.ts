@@ -5,6 +5,7 @@ import {SignUpForm} from '../model/SignUpForm';
 import {Observable} from 'rxjs';
 import {SignInForm} from '../model/SignInForm';
 import {JwtResponse} from '../model/JwtResponse';
+import {ChangeAvatar} from '../model/ChangeAvatar';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthService {
   data: boolean;
   private API_SIGNUP= environment.API_SERVE+'signup';
   private API_SIGNIN = environment.API_SERVE+'signin';
+  private API_CHANGE_AVATAR = environment.API_SERVE+'change-avatar';
   constructor(private http: HttpClient) { }
   signUp(signUpForm: SignUpForm): Observable<any> {
     return this.http.post<any>(this.API_SIGNUP, signUpForm);
@@ -23,6 +25,10 @@ export class AuthService {
 
   signIn(signInForm: SignInForm): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(this.API_SIGNIN, signInForm)
+  }
+
+  changeAvatar(changeAvatar : ChangeAvatar): Observable<ChangeAvatar> {
+    return this.http.put<ChangeAvatar>(this.API_CHANGE_AVATAR, changeAvatar)
   }
 
   setData(data) {

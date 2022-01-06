@@ -52,6 +52,13 @@ a:hover {
   transform: translateX(-50%);
   border-radius: 5px;
 }
+.avatar{
+  height: 50px;
+  width: 50px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
+  border-radius: 50%;
+}
 
 /**
   * Rules for when the device is detected to be a small screen.

@@ -10,12 +10,17 @@
   <a *ngIf="!checkLogin" mat-button class="docs-button" routerLink="login" aria-label="Angular Material">
     <span>Login</span>
   </a>
-  <a *ngIf="checkLogin" mat-button class="docs-button" routerLink="user-account" aria-label="Angular Material">
-    <img class="docs-angular-logo" src="{{avatar}}"
-         alt="">
+  <a *ngIf="checkLogin" mat-button class="docs-button"  aria-label="Angular Material">
+    <img  routerLink="change-avatar" class="avatar" [src]="avatar">
   </a>
   <a *ngIf="checkLogin" mat-button class="docs-button" routerLink="user-account" aria-label="Angular Material">
     <span>{{name}}</span>
+  </a>
+  <a *ngIf="checkLogin" mat-button class="docs-button" routerLink="create-product" aria-label="Angular Material">
+    <span>Create Product</span>
+  </a>
+  <a *ngIf="checkLogin" mat-button class="docs-button" routerLink="list-product" aria-label="Angular Material">
+    <span>Show List Product</span>
   </a>
 
 

@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 50px">
+            <mat-card style="margin: 50px 0">
+              <div *ngIf="product">
+                  <h3>Old Product</h3>
+                  <b>Name: </b>
+                  <i style="color: #f92672">{{product.name}}</i><br>
+                  <b>DateOfManufacture: </b>
+                  <i style="color: #f92672">{{product.dateOfManufacture}}</i><br>
+                  <b>Description: </b>
+                  <i style="color: #f92672">{{product.description}}</i><br>
+                  <b>AvatarProduct: </b>
+                  <img [src]="product.avatarProduct">
+              </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12" style="margin-top: 50px">
+                <mat-card style="margin: 50px 0">
+                    <form class="edit-product" #f="ngForm" (ngSubmit)="f.form.valid&&ngSubmit()" novalidate>
+                        <mat-error class="alert alert-primary">{{status}}</mat-error>
+                        <!--NAME-->
+                        <mat-form-field style="width: 400px" appearance="outline">
+                            <mat-label>Name:</mat-label>
+                            <input matInput name="name" [(ngModel)]="product.name" #name="ngModel" required>
+                            <mat-icon matSuffix>drive_file_rename_outline</mat-icon>
+                            <mat-error *ngIf="name.hasError('required')">The name product is required</mat-error>
+                        </mat-form-field><br>
+                        <!--DATE-->
+                        <mat-form-field style="width: 400px" appearance="outline">
+                            <mat-label>DateOfManufacture: </mat-label>
+                            <input matInput [matDatepicker]="picker" name="dateOfManufacture" [(ngModel)]="product.dateOfManufacture" #dateOfManufacture="ngModel" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="dateOfManufacture.hasError('required')">The DateOfManufacture is required</mat-error>
+                        </mat-form-field><br>
+                        <!--DESCRIPTION-->
+                        <mat-form-field style="width: 400px" appearance="outline">
+                            <mat-label>Description:</mat-label>
+                            <input matInput name="description" [(ngModel)]="product.description" #description="ngModel" required>
+                            <mat-icon matSuffix>description</mat-icon>
+                            <mat-error *ngIf="description.hasError('required')">The name product is required</mat-error>
+                        </mat-form-field><br>
+                        <!--AVATAR-->
+                        <app-upload-avatar (giveURLtoCreate)="onUploadAvatar($event)"></app-upload-avatar><br>
+                        <button  style="width: 400px" mat-stroked-button class="mat-button-toggle-group btn-outline-primary">Edit Product
+                            <mat-icon matSuffix>production_quantity_limits</mat-icon>
+                        </button>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -27,12 +27,31 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './FormLogin/login/login.component';
 import { UserAccountComponent } from './FormLogin/user-account/user-account.component';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment.prod';
+import { UploadAvatarComponent } from './upload/upload-avatar/upload-avatar.component';
+import {httpInterceptorProvider} from './security/auth.interceptor';
+import { ChangeAvatarComponent } from './manager-profile/change-avatar/change-avatar.component';
+import { CreateProductComponent } from './productManager/create-product/create-product.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { ListProductComponent } from './productManager/list-product/list-product.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import { EditProductComponent } from './productManager/edit-product/edit-product.component';
+import { DialogComponent } from './productManager/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home' } },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user-account', component: UserAccountComponent},
+  {path: 'change-avatar', component: ChangeAvatarComponent},
+  {path: 'create-product', component: CreateProductComponent},
+  {path: 'list-product', component: ListProductComponent},
+  {path: 'update-product/:id', component: EditProductComponent},
   {
     path: 'guide/getting-started',
     component: GettingStartedComponent,
@@ -41,7 +60,7 @@ export const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserAccountComponent],
+  declarations: [AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserAccountComponent, UploadAvatarComponent, ChangeAvatarComponent, CreateProductComponent, ListProductComponent, EditProductComponent, DialogComponent],
   imports: [
     FormsModule,
     HttpClientModule,
@@ -56,9 +75,11 @@ export const appRoutes: Routes = [
     BrowserAnimationsModule,
     NavBarModule, FooterModule,
     NgxAudioPlayerModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}), MatFormFieldModule, MatInputModule, ReactiveFormsModule
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    RouterModule.forRoot(appRoutes, {useHash: false}), MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatDatepickerModule, MatNativeDateModule, MatPaginatorModule, MatTableModule, MatDialogModule
   ],
-  providers: [],
+  providers: [httpInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule {
